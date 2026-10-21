@@ -1,0 +1,184 @@
+/* Chamberlain (Springfield) theme: bronze on black, Cormorant Garamond + Jost, Title Case, soft rounded panels
+   — taken from the Chamberlain home screens. Loaded after app.css and overrides it. */
+@font-face{font-family:"Jost";font-weight:400;font-display:swap;src:url(/fonts/jost-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Jost";font-weight:500;font-display:swap;src:url(/fonts/jost-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Jost";font-weight:600;font-display:swap;src:url(/fonts/jost-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Cormorant Garamond";font-weight:500;font-display:swap;src:url(/fonts/cormorant-garamond-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Cormorant Garamond";font-weight:600;font-display:swap;src:url(/fonts/cormorant-garamond-latin-600-normal.woff2) format("woff2")}
+:root{
+  --ink:#121214; --side:#0c0c0e; --side-2:#0a0a0b; --panel:#1C1C1F; --panel-2:#232327; --line:rgba(180,154,114,.18);
+  --fg:#EDE6DA; --muted:#A39C90; --gold:#B49A72; --gold-dk:#8C7553; --gold-soft:rgba(180,154,114,.14); --bronze-lt:#D2B98E;
+  --up:#9CC7A4; --down:#E0A27A; --live:#D9714F;
+  --f-brand:"Cormorant Garamond",Georgia,serif; --f-ui:"Jost","Helvetica Neue",sans-serif;
+  --r:16px;
+}
+body{font-family:var(--f-ui)}
+header{background:var(--side);border-bottom:1px solid var(--gold)}
+body::before{background:var(--side)}
+.logo{height:64px;width:auto;display:block;margin:-6px 0 -6px -8px}
+body.tv-on .logo{height:84px}
+@media (max-width:520px){.logo{height:46px}}
+.prod{border:1px solid var(--gold);background:none;padding:7px 18px 6px;box-shadow:inset 0 0 0 3px var(--side),inset 0 0 0 4px rgba(180,154,114,.5)}
+.prod b{font-family:var(--f-brand);font-weight:500;letter-spacing:.22em;color:var(--fg)}
+.prod span{font-weight:500;letter-spacing:.2em;color:var(--gold)}
+nav button{font-weight:500;color:var(--muted);border-radius:999px}
+nav button[aria-selected="true"]{color:var(--fg);border-color:var(--gold);background:var(--gold-soft)}
+.tvmode,.btn,.chips button,.quick button{border-radius:999px}
+.tvmode[aria-pressed="true"]{border-color:var(--gold);color:var(--bronze-lt)}
+.clock{font-family:var(--f-ui);font-size:15px}
+.clock b{font-weight:500}
+/* panels */
+.panel,.tv,.tile,.screen{border-radius:var(--r)}
+.panel{overflow:hidden}
+.ph{border-bottom-color:var(--line)}
+.ph h2{font-family:var(--f-brand);font-weight:600;font-size:21px;letter-spacing:0;text-transform:none;color:var(--fg)}
+.ph span{color:var(--muted)}
+.list li{border-bottom-color:var(--line)}
+.meta .src{color:var(--gold);font-weight:600;font-size:12px;letter-spacing:.02em;text-transform:none}
+.meta .tm{font-family:var(--f-ui)}
+.hl{font-weight:500;font-size:15px}
+.app-panel{border-top:1px solid var(--line)}
+.appmark{border-radius:6px;border-color:var(--gold);color:var(--bronze-lt);background:none}
+.flag{border-radius:4px;background:var(--gold);color:#141416;letter-spacing:.06em;text-transform:none;font-size:11px}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#141416}
+.screen{background:radial-gradient(120% 90% at 30% 15%,#26231e,#0c0c0e 70%)}
+.onair,.tile .lv,.lowthird{border-radius:999px}
+.tile{background:linear-gradient(160deg,#2a2620,#121214)}
+.tile .ex{border-radius:999px;border-color:var(--gold);color:var(--bronze-lt)}
+.tv .thumb{background:linear-gradient(160deg,#2a2620,#121214);font-weight:600}
+.lowthird .k,.avail{letter-spacing:.06em;text-transform:none}
+/* bottom bands */
+.tape{background:var(--side);border-top:1px solid var(--gold)}
+.lbl{background:var(--side);color:var(--bronze-lt);border:1px solid var(--gold);letter-spacing:.1em;text-transform:none;font-weight:600;font-size:12px}
+body.tv-on .crawl{background:#18171a;border-top:1px solid var(--gold)}
+body.tv-on .crawl .lbl{background:var(--gold);color:#141416;border-color:var(--gold)}
+.hi .s{letter-spacing:.02em;text-transform:none;font-size:15px;font-weight:600;color:var(--gold)}
+.hi .h{font-weight:500}
+.vr{width:2px;background:var(--gold)}
+.q .n,.q.idx .n{color:var(--gold)}
+body.tv-on .q .n{font-family:var(--f-ui);font-weight:600;color:var(--fg)}
+body.tv-on .q.idx .n{color:var(--bronze-lt)}
+body.tv-on .stage{border-color:var(--gold)}
+/* PIN screen */
+.gate{background:radial-gradient(120% 80% at 50% 0%,#26231e,#0c0c0e 70%)}
+.gate-logo{width:min(420px,90%);height:auto}
+.gate-card .btn{background:var(--gold);color:#141416;border-color:var(--gold)}
+.gate-card label{text-transform:none;letter-spacing:.06em;font-weight:500;font-size:14px;color:var(--bronze-lt)}
+.gate-card input{border-radius:12px;border-color:var(--line);background:var(--panel)}
+
+/* Weather */
+.wx-body{padding:14px 16px;display:grid;gap:12px}
+.wx-now{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px}
+.wx-t{font-family:var(--f-ui);font-size:44px;font-weight:400;line-height:1;color:var(--fg)}
+.wx-d{display:grid;gap:2px}.wx-d b{font-weight:500;font-size:16px}.wx-d span{font-size:13px;color:var(--muted)}
+.wx-hl{font-size:13px;color:var(--muted);text-align:right;line-height:1.5}
+.wx-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-size:13px;color:var(--muted)}
+.wx-hours{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;border-top:1px solid var(--line);padding-top:10px}
+.wx-hours span{display:grid;justify-items:center;gap:2px}.wx-hours i{font-style:normal;font-size:12px;color:var(--muted)}.wx-hours b{font-weight:500;font-size:15px}
+.wx-chip{font-size:15px;color:var(--muted);white-space:nowrap}.wx-chip b{color:var(--fg);font-weight:500}
+body.tv-on .wx-chip{font-size:18px}
+.meta .loc{font-size:11px;font-weight:500;color:var(--bronze-lt);border:1px solid rgba(180,154,114,.4);border-radius:999px;padding:1px 8px}
+
+/* Rain radar */
+.radar-map{position:relative;height:300px;background:#0c0c0e;border-bottom:1px solid var(--line)}
+.radar-msg{position:absolute;inset:0;display:grid;place-items:center;margin:0;color:var(--muted);font-size:14px;z-index:500}
+.leaflet-container{background:#0c0c0e;font-family:var(--f-ui)}
+.leaflet-control-attribution{background:rgba(12,12,14,.7)!important;color:#7d776d!important;font-size:9px!important}
+.leaflet-control-attribution a{color:#a39c90!important}
+.home-tip{background:rgba(18,18,20,.85);border:1px solid var(--gold);color:var(--fg);border-radius:999px;font:500 11px var(--f-ui);padding:2px 8px;box-shadow:none}
+.home-tip::before{display:none}
+.warn .warn-t{font-size:13.5px;font-weight:500}
+.warn .empty.ok{color:var(--muted);font-size:13px;padding:10px 16px}
+body.tv-on #p-radar .list{flex:none}
+body.tv-on #p-radar .radar-msg{place-items:center}
+.radar-map.leaflet-container{background:#0c0c0e}
+.leaflet-tooltip.home-tip{background:rgba(18,18,20,.88);border:1px solid var(--gold);color:var(--fg);border-radius:999px;font:500 11px var(--f-ui);padding:2px 8px;box-shadow:none}
+.leaflet-tooltip.home-tip::before{display:none}
+
+/* Larger radar: fills the right-hand column on computers and iPads */
+@media (min-width:1081px){.radar-map{height:clamp(420px,calc(100vh - 470px),720px)}}
+@media (max-width:1080px){.radar-map{height:420px}}
+@media (max-width:680px){.radar-map{height:340px}}
+/* The header temperature only shows in TV mode, where the Weather panel is hidden */
+body:not(.tv-on) .wx-chip{display:none!important}
+
+/* ===== Fire TV: the iPad overview, fitted to the TV screen (no scrolling) ===== */
+body.fit:not(.tv-on){height:100%;overflow:hidden}
+body.fit:not(.tv-on) main{flex:1;min-height:0;overflow:hidden;padding-block:14px calc(var(--bottom) + 14px)}
+body.fit:not(.tv-on) #v-overview{height:100%}
+body.fit:not(.tv-on) .cols{height:100%;align-items:stretch}
+body.fit:not(.tv-on) .col{min-height:0}
+body.fit:not(.tv-on) .col>.panel{min-height:0;display:flex;flex-direction:column}
+body.fit:not(.tv-on) .col:first-child>.panel{flex:1 1 0}
+body.fit:not(.tv-on) .c-main>.panel:last-child{flex:1 1 0}
+body.fit:not(.tv-on) .list{flex:1;min-height:0;overflow:hidden}
+body.fit:not(.tv-on) #p-radar{flex:1 1 0}
+body.fit:not(.tv-on) .radar-map{flex:1;height:auto;min-height:0}
+body.fit:not(.tv-on) .screen{aspect-ratio:auto;height:clamp(240px,34vh,420px)}
+/* Remote highlight */
+body.fit .tile:focus,body.fit .tile:focus-visible,body.fit button:focus-visible,body.fit a:focus-visible{outline:3px solid var(--bronze-lt);outline-offset:3px;box-shadow:0 0 0 6px rgba(180,154,114,.18)}
+body.fit .list a:focus-visible{outline-offset:-3px;background:rgba(180,154,114,.08)}
+body.fit:not(.tv-on) #p-radar .list{flex:none}
+
+/* Panel headings: bronze serif with the logo's diamond, on a lighter band with a bronze rule */
+.ph{background:linear-gradient(180deg,#26241f,#1f1e1c);border-bottom:1px solid rgba(180,154,114,.55);padding:12px 16px 11px;align-items:center}
+.ph h2{font-family:var(--f-brand);font-weight:600;font-size:25px;line-height:1.1;letter-spacing:.015em;color:var(--bronze-lt);gap:10px}
+.ph h2::before{content:"";flex:none;width:7px;height:7px;background:var(--gold);transform:rotate(45deg);margin-right:2px}
+.ph span{font-size:12.5px}
+@media (max-width:680px){.ph h2{font-size:23px}}
+.radar-msg{place-items:start center;padding-top:28px}
+
+/* Market moves stay conventional: green for up, red for down (everything else in house style) */
+.q .u,body.tv-on .q .u{color:#3FCB7E}
+.q .d,body.tv-on .q .d{color:#F0524A}
+
+/* Headings stay on one line on iPads and laptops */
+.ph h2{white-space:nowrap;font-size:clamp(20px,1.85vw,25px)}
+.ph span{white-space:nowrap}
+@media (max-width:1400px){.u-w{display:none}}
+@media (max-width:680px){.ph h2{font-size:23px}.u-w{display:inline}}
+
+/* Share-group marker in the markets ticker */
+.qg{flex:none;align-self:center;margin:0 22px 0 6px;padding:3px 12px;border:1px solid var(--gold);border-radius:999px;color:var(--bronze-lt);font:600 12px var(--f-ui);letter-spacing:.06em;white-space:nowrap}
+body.tv-on .qg{font-size:14px}
+
+/* Page turn */
+.ph .pg{margin-left:8px;color:var(--bronze-lt);font-weight:600;font-size:13px}
+.ph .pg:empty{display:none}
+.list{transition:opacity .45s ease}
+.list.turning{opacity:0}
+@media (prefers-reduced-motion:reduce){.list{transition:none}}
+.ph .pg{font-family:var(--f-ui);letter-spacing:.04em}
+
+/* Darken the OpenStreetMap background so it sits with the bronze-on-black theme */
+/* Radar: no colour filters (they are heavy for the TV stick). The basemap is CARTO's dark style, lifted
+   a little with a plain translucent wash so coastlines and names read; rain is shown at full strength. */
+.radar-map .leaflet-layer.basemap{opacity:1}
+
+/* The TV: brighter text, bronze and panels against the black. TVs show dark greys much duller than
+   computer screens, so the Fire TV layout lifts everything a step. */
+body.fit{--fg:#FFF9EC;--muted:#D6CEC0;--gold:#D6BD92;--gold-dk:#B49A72;--gold-soft:rgba(214,189,146,.18);
+  --panel:#232327;--panel-2:#2C2C31;--line:rgba(214,189,146,.34)}
+/* On the TV, no rounded clipping around video: some TV graphics chips draw clipped video as black. */
+body.fit .panel.stage,body.fit .screen,body.fit .tile,body.fit .tile iframe{border-radius:0!important}
+body.fit .panel.stage{overflow:visible}
+
+/* TV overscan: televisions crop a few percent off every edge, so on the TV everything sits a little
+   way in: the ticker lifted off the bottom edge, a margin at the top and sides. */
+html.scaled body{padding:10px 18px 0}
+body.fit .tape{bottom:16px;left:18px;right:18px}
+body.fit:not(.tv-on) main{padding-block:14px calc(var(--bottom) + 32px)}
+/* Rain colour key: the radar's own colours, light to heavy. */
+.radar-key{display:flex;align-items:center;gap:8px;padding:5px 12px;font-size:11px;color:var(--muted);border-bottom:1px solid var(--line)}
+.radar-key i{flex:1;height:8px;border-radius:4px;background:linear-gradient(90deg,#5ee35e,#1fbf1f,#ffe600,#ffa000,#ff2a00,#c80000,#ff2fd6)}
+body.fit .radar-key{font-size:12px;color:var(--fg)}
+body.fit.tv-on .logo{height:64px}
+body.fit.tv-on .crawl{border-top:1px solid var(--gold)}
+/* Place names on the radar: the monitor's own, cream with a dark halo so they read over the rain;
+   the big towns in bronze capitals. */
+.leaflet-tooltip.place{background:none;border:0;box-shadow:none;padding:0;color:var(--fg);font:500 12.5px/1 var(--f-ui);letter-spacing:.02em;white-space:nowrap;
+  text-shadow:0 0 3px #000,0 0 3px #000,0 1px 2px #000;pointer-events:none}
+.leaflet-tooltip.place::before{display:none}
+.leaflet-tooltip.place.big{font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--bronze-lt)}
+body.fit .leaflet-tooltip.place{font-size:13.5px}
+body.fit .leaflet-tooltip.place.big{font-size:15px}
