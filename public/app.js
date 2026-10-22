@@ -466,8 +466,14 @@
     if (scr) scr.style.background = f ? "#000" : ""; // black bars, not the box's gradient, round a letterboxed picture
     if (!f) return;
     const w = scr.clientWidth, h = scr.clientHeight; if (!w || !h) return;
+    // The size the player is told it is: 720 lines on the TV stick (asked for 1080 it dropped to 144p),
+    // full HD on computers; 0 leaves the player at its box's own size. Changed from the stick with
+    // ?hd=720, ?hd=1080 or ?hd=0 (remembered), ?hd=auto goes back to this rule.
+    const pref = store.get("rc-hd", null);
+    const lines = pref !== null ? Number(pref) : document.body.classList.contains("fit") ? 720 : 1080;
+    if (!lines) { f.style.cssText = ""; return; }
     const z = parseFloat(document.body.style.zoom) || 1; // Silk's whole-page zoom shrinks the frame too
-    const W = 1920 / z, H = 1080 / z, k = Math.min(w / W, h / H);
+    const W = (lines * 16 / 9) / z, H = lines / z, k = Math.min(w / W, h / H);
     f.style.cssText = `position:absolute;left:0;top:0;right:auto;bottom:auto;width:${W.toFixed(2)}px;height:${H.toFixed(2)}px;transform-origin:0 0;transform:translate(${((w - W * k) / 2).toFixed(2)}px,${((h - H * k) / 2).toFixed(2)}px) scale(${k.toFixed(5)})`;
   }
   const mainSizer = window.ResizeObserver ? new ResizeObserver(() => sizeMain()) : null;
@@ -586,6 +592,7 @@
   // The Fire TV opens on the same overview as the iPad, sized to fit the TV without scrolling.
   // TV Mode (one channel, full screen) is one press away.
   const qs = new URLSearchParams(location.search);
+  if (qs.get("hd") !== null) store.set("rc-hd", qs.get("hd") === "auto" ? null : qs.get("hd"));
   document.body.classList.toggle("fit", isFireTV || qs.has("fit"));
   // Fault-finding switch for the TV: while public/mode.json says {"test": true}, the Fire TV is sent
   // to the plain video test page (/t) instead of the monitor. Set it back to false and restart Fully.
